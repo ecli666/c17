@@ -1,4 +1,4 @@
-CC		= gcc
+CC	= gcc
 CFLAGS	= -W -std=c17
 TARGET	= hello-world
 
