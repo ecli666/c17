@@ -5,7 +5,7 @@
 static void add_two(int foo, int bar)
 {
 	__asm__ __volatile__(
-		"addl %%ebx,%%eax"
+		"addl %%ebx,%%eax;\n"
 		: "=a"(foo)
 		: "a"(foo), "b"(bar)
 		);
@@ -43,7 +43,7 @@ static void decrement_compare(int foo)
 static void bit_set(int foo, int pos)
 {
 	__asm__ __volatile__(
-		"btsl %1,%0"
+		"btsl %1,%0;\n"
 		: "=m"(foo)
 		: "ir"(pos)
 		: "cc"
@@ -55,10 +55,10 @@ static void copy_str(char *dest, const char *src)
 {
 	int d0, d1, d2;
 	__asm__ __volatile__(
-		"1:\tlodsb\n"
-		"stosb\n"
-                "testb %%al,%%al\n"
-                "jne 1b"
+		"1:\tlodsb;\n"
+		"stosb;\n"
+                "testb %%al,%%al;\n"
+                "jne 1b;\n"
                 : "=&S"(d0), "=&D"(d1), "=&a"(d2)
                 : "0"(src), "1"(dest) 
                 : "memory"
