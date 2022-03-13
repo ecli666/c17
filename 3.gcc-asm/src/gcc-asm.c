@@ -9,7 +9,7 @@ static void add_two(int foo, int bar)
 		: "=a"(foo)
 		: "a"(foo), "b"(bar)
 		);
-	printf("foo + bar = %d\n", foo);
+	printf("add result is %d\n", foo);
 }
 
 static void atomic_add_two(int foo, int bar)
@@ -20,7 +20,7 @@ static void atomic_add_two(int foo, int bar)
 		: "=m"(foo)
 		: "ir"(bar), "m"(foo)
 		);
-	printf("atomic foo + bar = %d\n", foo);
+	printf("atomic add result is %d\n", foo);
 }
 
 static void decrement_compare(int foo)
@@ -48,7 +48,7 @@ static void bit_set(int foo, int pos)
 		: "ir"(pos)
 		: "cc"
 		);
-	printf("foo result = %d\n", foo);
+	printf("bit set result is %d\n", foo);
 }
 
 static void copy_str(char *dest, const char *src)
@@ -76,7 +76,7 @@ int main(int argc, char *argv[argc + 1])
 	const char *src_str = "abc";
 	char dest_str[16] = {0};
 	copy_str(dest_str, src_str);
-	puts(dest_str);
-	
+	printf("string copy result is %s\n", dest_str);
+
 	return EXIT_SUCCESS;
 }
